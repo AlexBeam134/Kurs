@@ -45,7 +45,7 @@
             // 
             // Login_textBox
             // 
-            this.Login_textBox.Location = new System.Drawing.Point(53, 63);
+            this.Login_textBox.Location = new System.Drawing.Point(53, 91);
             this.Login_textBox.Name = "Login_textBox";
             this.Login_textBox.Size = new System.Drawing.Size(188, 20);
             this.Login_textBox.TabIndex = 1;
@@ -55,6 +55,7 @@
             this.password_textBox.Location = new System.Drawing.Point(53, 130);
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
+            this.password_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.password_textBox.Size = new System.Drawing.Size(188, 20);
             this.password_textBox.TabIndex = 2;
             // 
@@ -62,6 +63,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(298, 279);
             this.Controls.Add(this.password_textBox);
             this.Controls.Add(this.Login_textBox);

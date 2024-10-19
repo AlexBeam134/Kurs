@@ -19,7 +19,7 @@ namespace Kurs
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            if (Login_textBox.Text == "admin" && password_textBox.Text == "admin")
+            if (Login_textBox.Text == "" && password_textBox.Text == "")
             {
                 this.Hide();
                 MainForm main = new MainForm();
