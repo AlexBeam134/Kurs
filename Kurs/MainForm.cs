@@ -40,5 +40,10 @@ namespace Kurs
         {
 
         }
+
+        private void baseTeacherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

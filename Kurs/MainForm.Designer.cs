@@ -33,7 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьБазуКурсовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.базуПреподавателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baseTeacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.базуПредметовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поискToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,29 +42,30 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kursDataSet1 = new Kurs.kursDataSet();
+            this.coursesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gradesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gradesTableAdapter1 = new Kurs.kursDataSetTableAdapters.gradesTableAdapter();
-            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentsTableAdapter1 = new Kurs.kursDataSetTableAdapters.studentsTableAdapter();
-            this.coursesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coursesTableAdapter1 = new Kurs.kursDataSetTableAdapters.coursesTableAdapter();
-            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teachersTableAdapter1 = new Kurs.kursDataSetTableAdapters.teachersTableAdapter();
-            this.iddradesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.courseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.scoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teacherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.scoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.courseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.studentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.iddradesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kursDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coursesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -80,7 +81,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.сохранитьToolStripMenuItem});
+            this.сохранитьToolStripMenuItem,
+            this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(943, 24);
@@ -101,17 +103,18 @@
             // открытьБазуКурсовToolStripMenuItem
             // 
             this.открытьБазуКурсовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.базуПреподавателейToolStripMenuItem,
+            this.baseTeacherToolStripMenuItem,
             this.базуПредметовToolStripMenuItem});
             this.открытьБазуКурсовToolStripMenuItem.Name = "открытьБазуКурсовToolStripMenuItem";
             this.открытьБазуКурсовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьБазуКурсовToolStripMenuItem.Text = "Открыть";
             // 
-            // базуПреподавателейToolStripMenuItem
+            // baseTeacherToolStripMenuItem
             // 
-            this.базуПреподавателейToolStripMenuItem.Name = "базуПреподавателейToolStripMenuItem";
-            this.базуПреподавателейToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.базуПреподавателейToolStripMenuItem.Text = "Базу преподавателей";
+            this.baseTeacherToolStripMenuItem.Name = "baseTeacherToolStripMenuItem";
+            this.baseTeacherToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.baseTeacherToolStripMenuItem.Text = "Базу преподавателей";
+            this.baseTeacherToolStripMenuItem.Click += new System.EventHandler(this.baseTeacherToolStripMenuItem_Click);
             // 
             // базуПредметовToolStripMenuItem
             // 
@@ -179,10 +182,25 @@
             this.dataGridView1.Size = new System.Drawing.Size(943, 334);
             this.dataGridView1.TabIndex = 0;
             // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.kursDataSet1;
+            // 
             // kursDataSet1
             // 
             this.kursDataSet1.DataSetName = "kursDataSet";
             this.kursDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // coursesBindingSource
+            // 
+            this.coursesBindingSource.DataMember = "courses";
+            this.coursesBindingSource.DataSource = this.kursDataSet1;
+            // 
+            // teachersBindingSource
+            // 
+            this.teachersBindingSource.DataMember = "teachers";
+            this.teachersBindingSource.DataSource = this.kursDataSet1;
             // 
             // gradesBindingSource
             // 
@@ -193,50 +211,40 @@
             // 
             this.gradesTableAdapter1.ClearBeforeFill = true;
             // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "students";
-            this.studentsBindingSource.DataSource = this.kursDataSet1;
-            // 
             // studentsTableAdapter1
             // 
             this.studentsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // coursesBindingSource
-            // 
-            this.coursesBindingSource.DataMember = "courses";
-            this.coursesBindingSource.DataSource = this.kursDataSet1;
             // 
             // coursesTableAdapter1
             // 
             this.coursesTableAdapter1.ClearBeforeFill = true;
             // 
-            // teachersBindingSource
-            // 
-            this.teachersBindingSource.DataMember = "teachers";
-            this.teachersBindingSource.DataSource = this.kursDataSet1;
-            // 
             // teachersTableAdapter1
             // 
             this.teachersTableAdapter1.ClearBeforeFill = true;
             // 
-            // iddradesDataGridViewTextBoxColumn
+            // справкаToolStripMenuItem
             // 
-            this.iddradesDataGridViewTextBoxColumn.DataPropertyName = "id_drades";
-            this.iddradesDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.iddradesDataGridViewTextBoxColumn.HeaderText = "№";
-            this.iddradesDataGridViewTextBoxColumn.Name = "iddradesDataGridViewTextBoxColumn";
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.справкаToolStripMenuItem.Text = "Справка";
             // 
-            // studentDataGridViewTextBoxColumn
+            // teacherDataGridViewTextBoxColumn
             // 
-            this.studentDataGridViewTextBoxColumn.DataPropertyName = "student";
-            this.studentDataGridViewTextBoxColumn.DataSource = this.studentsBindingSource;
-            this.studentDataGridViewTextBoxColumn.DisplayMember = "FIO";
-            this.studentDataGridViewTextBoxColumn.HeaderText = "Студент";
-            this.studentDataGridViewTextBoxColumn.Name = "studentDataGridViewTextBoxColumn";
-            this.studentDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.studentDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.studentDataGridViewTextBoxColumn.ValueMember = "id_student";
+            this.teacherDataGridViewTextBoxColumn.DataPropertyName = "teacher";
+            this.teacherDataGridViewTextBoxColumn.DataSource = this.teachersBindingSource;
+            this.teacherDataGridViewTextBoxColumn.DisplayMember = "FIO";
+            this.teacherDataGridViewTextBoxColumn.HeaderText = "Преподаватель";
+            this.teacherDataGridViewTextBoxColumn.Name = "teacherDataGridViewTextBoxColumn";
+            this.teacherDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.teacherDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.teacherDataGridViewTextBoxColumn.ValueMember = "id_teacher";
+            // 
+            // scoreDataGridViewTextBoxColumn
+            // 
+            this.scoreDataGridViewTextBoxColumn.DataPropertyName = "score";
+            this.scoreDataGridViewTextBoxColumn.HeaderText = "Балл";
+            this.scoreDataGridViewTextBoxColumn.Name = "scoreDataGridViewTextBoxColumn";
             // 
             // courseDataGridViewTextBoxColumn
             // 
@@ -249,22 +257,23 @@
             this.courseDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.courseDataGridViewTextBoxColumn.ValueMember = "id_course";
             // 
-            // scoreDataGridViewTextBoxColumn
+            // studentDataGridViewTextBoxColumn
             // 
-            this.scoreDataGridViewTextBoxColumn.DataPropertyName = "score";
-            this.scoreDataGridViewTextBoxColumn.HeaderText = "Балл";
-            this.scoreDataGridViewTextBoxColumn.Name = "scoreDataGridViewTextBoxColumn";
+            this.studentDataGridViewTextBoxColumn.DataPropertyName = "student";
+            this.studentDataGridViewTextBoxColumn.DataSource = this.studentsBindingSource;
+            this.studentDataGridViewTextBoxColumn.DisplayMember = "FIO";
+            this.studentDataGridViewTextBoxColumn.HeaderText = "Студент";
+            this.studentDataGridViewTextBoxColumn.Name = "studentDataGridViewTextBoxColumn";
+            this.studentDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.studentDataGridViewTextBoxColumn.ValueMember = "id_student";
             // 
-            // teacherDataGridViewTextBoxColumn
+            // iddradesDataGridViewTextBoxColumn
             // 
-            this.teacherDataGridViewTextBoxColumn.DataPropertyName = "teacher";
-            this.teacherDataGridViewTextBoxColumn.DataSource = this.teachersBindingSource;
-            this.teacherDataGridViewTextBoxColumn.DisplayMember = "FIO";
-            this.teacherDataGridViewTextBoxColumn.HeaderText = "Преподаватель";
-            this.teacherDataGridViewTextBoxColumn.Name = "teacherDataGridViewTextBoxColumn";
-            this.teacherDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.teacherDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.teacherDataGridViewTextBoxColumn.ValueMember = "id_teacher";
+            this.iddradesDataGridViewTextBoxColumn.DataPropertyName = "id_drades";
+            this.iddradesDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.iddradesDataGridViewTextBoxColumn.HeaderText = "№";
+            this.iddradesDataGridViewTextBoxColumn.Name = "iddradesDataGridViewTextBoxColumn";
             // 
             // MainForm
             // 
@@ -283,11 +292,11 @@
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kursDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kursDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coursesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,7 +316,7 @@
         private kursDataSetTableAdapters.coursesTableAdapter coursesTableAdapter;
         private kursDataSetTableAdapters.teachersTableAdapter teachersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem открытьБазуКурсовToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem базуПреподавателейToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baseTeacherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem базуПредметовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поискToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
@@ -321,6 +330,7 @@
         private kursDataSetTableAdapters.coursesTableAdapter coursesTableAdapter1;
         private System.Windows.Forms.BindingSource teachersBindingSource;
         private kursDataSetTableAdapters.teachersTableAdapter teachersTableAdapter1;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn iddradesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn studentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn courseDataGridViewTextBoxColumn;
