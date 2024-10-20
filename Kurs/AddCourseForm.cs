@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Kurs
 {
-    public partial class AddForm : Form
+    public partial class AddCourseForm : Form
     {
-        public AddForm()
+        public AddCourseForm()
         {
             InitializeComponent();
         }
